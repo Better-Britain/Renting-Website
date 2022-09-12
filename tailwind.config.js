@@ -10,6 +10,9 @@ module.exports = {
         'blue': {
           'uk': "hsl(222, 98%, 21%)",
         },
+        'red': {
+          'uk': "hsl(350, 85%, 42%)",
+        },
         'white': {
           'uk': '#fff',
         },
