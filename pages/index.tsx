@@ -45,7 +45,7 @@ const Home: NextPage = () => {
           <h1 className='text-xl mb-4'>Business Example</h1>
           <p className='mb-2'>We reach out to 10 foundations to raise capital, 3 respond and pledge £200,000 each, this is an initial raise of £600,000.</p>
           <p className='mb-2'>We invest 70% of this (£420,000) into VHYL index fund which at the time of writing provides a 3.95% dividend (£16,590/year), this will be used in part to pay directors salary and accountancy fees.</p>
-          <p className='mb-2'>The remaining 30% (£180,000) will be invested in our partner Crypto project which is targeting a 4-7% monthly return (4%=£7,200/mo - 7%=£12,600) - this money will be compounded until such time that it is enough to buy a decent condition house in the market, let's say around £80,000 (80000/7200 = 11.1 months) - therefore every year we can buy an additional property and we will compound the twelfth month income to provide additional growth.</p>
+          <p className='mb-2'>The remaining 30% (£180,000) will be invested in our partner Crypto project which is targeting a 4-7% monthly return (4%=£7,200/mo - 7%=£12,600) - this money will be compounded until such time that it is enough to buy a decent condition house in the market, let&apos;s say around £80,000 (80000/7200 = 11.1 months) - therefore every year we can buy an additional property and we will compound the twelfth month income to provide additional growth.</p>
           <p>As we gain more funds or if more investors donate or we are able to find homes at a cheaper initial cost we can add these additional funds to our investments to afford us the ability to bring down the annual timeline to either buy more houses or invest more for quicker buying.</p>
         </section>
 
