@@ -12,7 +12,7 @@ const Home: NextPage = () => {
 
       <main>
         <h1>
-          Welcome
+          Better British Renting Limited
         </h1>
       </main>
     </div>
