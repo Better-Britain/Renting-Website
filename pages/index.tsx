@@ -8,7 +8,7 @@ const IntroSection = ({ color, children, heading }: any) => {
   if (color === 'blue') { colorClass = 'bg-blue-uk text-white-uk' }
   return (
     <section className={`p-16 ${colorClass}`}>
-      <h1 className='text-xl mb-4'>{heading}</h1>
+      <h1 className='text-2xl mb-4'>{heading}</h1>
       {children}
     </section>
   )
