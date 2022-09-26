@@ -2,11 +2,25 @@
   --uk-flag-red: hsl(350, 85%, 42%);
   --uk-flag-blue: hsl(222, 98%, 21%);
   --uk-flag-white: hsl(0, 0%, 100%);
+  --bg: hsl(0, 0%, 93%);
+  --text: #202020;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: hsl(223, 93%, 5%);
+    --text: hsl(0, 0%, 93%);
+  }
 }
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+  background: var(--bg);
+  color: var(--text);
+}
 
 html, body {
   font-family: 'Roboto Slab', serif;
@@ -25,9 +39,19 @@ th {
   text-align: left;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    background: hsl(223, 93%, 5%);
-    color: #ececec;
-  }
+thead tr {
+  background-color: rgba(0,0,0,0.4);
+}
+
+table.rounded {
+  border: 2px solid rgba(0,0,0,0.4);
+  border-radius: 0.5rem;
+}
+
+table.rounded th {
+  padding: 0.15rem 0.5rem;
+}
+
+table.rounded td {
+  padding: 0.1rem 0.5rem;
 }
