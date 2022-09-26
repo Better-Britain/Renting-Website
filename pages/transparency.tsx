@@ -1,6 +1,10 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Navbar from '../components/Navbar'
+import pound from '../functions/formatting/pound'
+import percent from '../functions/formatting/percent'
+
+const fundsRaised = 0;
 
 const investments = [
   {
@@ -29,6 +33,25 @@ const investments = [
   }
 ]
 
+const assets = [
+  {
+    area: 'Sunderland',
+    properties: 0,
+    agents: ['Gentoo'],
+    purchaseValue: 0,
+    monthlyRentIncome: 0,
+    annualYield: 0,
+  },
+  {
+    area: 'Newcastle-Upon-Tyne',
+    properties: 0,
+    agents: [],
+    purchaseValue: 0,
+    monthlyRentIncome: 0,
+    annualYield: 0,
+  },
+]
+
 const Home: NextPage = () => {
   return (
     <div>
@@ -48,13 +71,13 @@ const Home: NextPage = () => {
         </section>
 
         <section className='p-16'>
-          <h1 className='text-xl'>Funds Raised</h1>
-          £0
+          <h1 className='text-xl mb-4'>Funds Raised</h1>
+          <span className='text-8xl'>{pound(fundsRaised)}</span>
         </section>
 
         <section className='p-16'>
-          <h1 className='text-xl'>Investments</h1>
-          <table className='striped'>
+          <h1 className='text-xl mb-4'>Investments</h1>
+          <table className='striped rounded'>
             <thead>
               <tr>
                 <th>Platform / Investment</th>
@@ -70,11 +93,11 @@ const Home: NextPage = () => {
                 investments.map(investment => (
                   <tr key={investment.name}>
                     <td>{investment.name}</td>
-                    <td>£{investment.invested}</td>
-                    <td>£{investment.annualDividendForecast}</td>
-                    <td>£{investment.dividendsReceived}</td>
-                    <td>£{investment.taxPaid}</td>
-                    <td>£{investment.netIncome}</td>
+                    <td>{pound(investment.invested)}</td>
+                    <td>{pound(investment.annualDividendForecast)}</td>
+                    <td>{pound(investment.dividendsReceived)}</td>
+                    <td>{pound(investment.taxPaid)}</td>
+                    <td>{pound(investment.netIncome)}</td>
                   </tr>
                 ))
               }
@@ -93,7 +116,34 @@ const Home: NextPage = () => {
         </section>
 
         <section className='p-16'>
-          <h1 className='text-xl'>Assets</h1>
+          <h1 className='text-xl mb-4'>Assets</h1>
+          No assets currently held
+          <table className='striped rounded'>
+            <thead>
+              <tr>
+                <th>Area</th>
+                <th>Number of Properties</th>
+                <th>Agents</th>
+                <th>Purchase Value</th>
+                <th>Monthly Rent Income</th>
+                <th>Annual Yield</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                assets.map(asset => (
+                  <tr key={asset.area}>
+                    <td>{asset.area}</td>
+                    <td>{asset.properties}</td>
+                    <td>{asset.agents.join(', ')}</td>
+                    <td>{pound(asset.purchaseValue)}</td>
+                    <td>{pound(asset.monthlyRentIncome)}</td>
+                    <td>{percent(asset.annualYield)}</td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
         </section>
       </main>
     </div>
