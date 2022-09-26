@@ -17,6 +17,14 @@ h1 {
   font-family: Roboto, sans-serif;
 }
 
+table {
+  width: 100%;
+}
+
+th {
+  text-align: left;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     background: hsl(223, 93%, 5%);
