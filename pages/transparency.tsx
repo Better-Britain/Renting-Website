@@ -96,8 +96,8 @@ const Home: NextPage = () => {
                     <td>{asset.properties}</td>
                     <td>{asset.agents.join(', ')}</td>
                     <td>{pound(asset.purchaseValue)}</td>
-                    <td>{pound(asset.monthlyRentIncome)}</td>
-                    <td>{percent(((asset.monthlyRentIncome * 12) / asset.purchaseValue) * 100)}</td>
+                    <td>{pound(asset.monthlyRentalIncome)}</td>
+                    <td>{percent(((asset.monthlyRentalIncome * 12) / asset.purchaseValue) * 100)}</td>
                   </tr>
                 ))
               }
