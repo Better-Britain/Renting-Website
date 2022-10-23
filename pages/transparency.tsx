@@ -62,13 +62,13 @@ const Home: NextPage = () => {
             </tbody>
             <tfoot>
               <tr>
-                <td></td>
+                <td>Totals</td>
                 <td>{pound(investmentSummary.invested)}</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>{pound(investmentSummary.annualDividendForecast)}</td>
+                <td>{pound(investmentSummary.dividendsReceived)}</td>
+                <td>{pound(investmentSummary.taxPaid)}</td>
+                <td>{pound(investmentSummary.losses)}</td>
+                <td>{pound(investmentSummary.netIncome)}</td>
               </tr>
             </tfoot>
           </table>
