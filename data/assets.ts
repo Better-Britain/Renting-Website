@@ -1,6 +1,10 @@
 enum Areas {
-  'Sunderland',
-  'Newcastle-Upon-Tyne'
+  'Sunderland' = 'Sunderland (Tyne and Wear)',
+  'Newcastle' = 'Newcastle-Upon-Tyne'
+}
+
+enum Agents {
+  'Gentoo' = 'Gentoo'
 }
 
 export interface RegionalAssetSummary {
@@ -14,7 +18,7 @@ export interface RegionalAssetSummary {
 
 export interface Property {
   area: Areas;
-  agent: string;
+  agent: string | Agents;
   purchaseValue: number;
   repairs: number;
   monthlyRentalIncome: number;
@@ -23,14 +27,21 @@ export interface Property {
 export const properties: Property[] = [
   // {
   //   area: Areas.Sunderland,
-  //   agent: 'Gentoo',
-  //   purchaseValue: 1000,
-  //   monthlyRentalIncome: 350,
+  //   agent: Agents.Gentoo,
+  //   purchaseValue: 100000,
+  //   monthlyRentalIncome: 450,
   //   repairs: 0
   // },
   // {
   //   area: Areas.Sunderland,
-  //   agent: 'Agent2',
+  //   agent: 'Agent 2',
+  //   purchaseValue: 5000,
+  //   monthlyRentalIncome: 350,
+  //   repairs: 0
+  // },
+  // {
+  //   area: Areas.Newcastle,
+  //   agent: 'Agent3',
   //   purchaseValue: 500,
   //   monthlyRentalIncome: 350,
   //   repairs: 0
@@ -41,64 +52,44 @@ const areaSummaryObj: {[key: string]: RegionalAssetSummary} = {}
 
 export const areaSummary: RegionalAssetSummary[] = []
 
+export const areaSummaryTotals = {
+  purchaseValue: 0,
+  repairsValue: 0,
+  monthlyRentalIncome: 0,
+  properties: 0,
+}
+
 properties.forEach(property => {
-  const summary = areaSummaryObj[property.area as unknown as string]
   if (!areaSummaryObj.hasOwnProperty(property.area)) {
     areaSummaryObj[property.area] = {
       name: property.area,
-      properties: 1,
-      agents: [property.agent],
-      purchaseValue: property.purchaseValue,
-      repairsValue: property.repairs,
-      monthlyRentalIncome: property.monthlyRentalIncome,
+      properties: 0,
+      agents: [],
+      purchaseValue: 0,
+      repairsValue: 0,
+      monthlyRentalIncome: 0,
     }
-  } else {
-    if (!summary.agents.includes(property.agent)) {
-      summary.agents.push(property.agent)
-    }
-    summary.purchaseValue += property.purchaseValue
-    summary.repairsValue += property.repairs
-    summary.monthlyRentalIncome += property.monthlyRentalIncome
-    areaSummaryObj[property.area] = summary
-    // areaSummaryObj[property.area].agents.push
-    
-    // = {
-    //   properties: 1,
-    //   agents: [property.agent],
-    //   purchaseValue: property.purchaseValue,
-    //   repairsValue: property.repairs,
-    //   monthlyRentalIncome: property.monthlyRentalIncome,
-    // }
   }
+
+  const summary = areaSummaryObj[property.area as unknown as string]
+
+  if (!summary.agents.includes(property.agent)) {
+    summary.agents.push(property.agent)
+  }
+  summary.properties += 1
+  summary.purchaseValue += property.purchaseValue
+  summary.repairsValue += property.repairs
+  summary.monthlyRentalIncome += property.monthlyRentalIncome
+  areaSummaryObj[property.area] = summary
+
+  areaSummaryTotals.properties += 1
+  areaSummaryTotals.purchaseValue += property.purchaseValue
+  areaSummaryTotals.repairsValue += property.repairs
+  areaSummaryTotals.monthlyRentalIncome += property.monthlyRentalIncome
 })
 
 Object.keys(areaSummaryObj).map(key => {
   areaSummary.push(areaSummaryObj[key])
 })
-
-// const regionalAssets: RegionalAssetSummary[] = [
-//   {
-//     area: 'Sunderland',
-//     properties: 0,
-//     agents: [],
-//     purchaseValue: 0,
-//     repairsValue: 0,
-//     monthlyRentalIncome: 0,
-//   },
-//   {
-//     area: 'Newcastle-Upon-Tyne',
-//     properties: 0,
-//     agents: [],
-//     purchaseValue: 0,
-//     repairsValue: 0,
-//     monthlyRentalIncome: 0,
-//   },
-// ]
-
-// regionalAssets.forEach((asset: RegionalAssetSummary) => {
-//   const assetKeys = ['properties', 'purchaseValue', 'repairsValue', 'monthlyRentalIncome', 'annualYield']
-//   assetKeys.forEach((key: string) => { 
-//   })
-// })
 
 export default areaSummary

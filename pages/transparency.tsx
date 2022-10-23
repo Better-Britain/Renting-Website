@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Navbar from '../components/Navbar'
 import pound from '../functions/formatting/pound'
 import percent from '../functions/formatting/percent'
-import { areaSummary } from '../data/assets'
+import { areaSummary, areaSummaryTotals } from '../data/assets'
 import { investments, investmentSummary } from '../data/investments'
 
 const fundsRaised = 0;
@@ -105,11 +105,11 @@ const Home: NextPage = () => {
             <tfoot>
               <tr>
                 <td>Totals:</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>{areaSummaryTotals.properties}</td>
+                <td>-</td>
+                <td>{pound(areaSummaryTotals.purchaseValue)}</td>
+                <td>{pound(areaSummaryTotals.monthlyRentalIncome)}</td>
+                <td>{percent(((areaSummaryTotals.monthlyRentalIncome * 12) / areaSummaryTotals.purchaseValue) * 100)}</td>
               </tr>
             </tfoot>
           </table>
