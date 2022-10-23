@@ -62,7 +62,7 @@ const Home: NextPage = () => {
             </tbody>
             <tfoot>
               <tr>
-                <td>Totals</td>
+                <td>Totals:</td>
                 <td>{pound(investmentSummary.invested)}</td>
                 <td>{pound(investmentSummary.annualDividendForecast)}</td>
                 <td>{pound(investmentSummary.dividendsReceived)}</td>
@@ -75,8 +75,8 @@ const Home: NextPage = () => {
         </section>
 
         <section className='p-16'>
-          <h1 className='text-xl mb-4'>Assets</h1>
-          No assets currently held
+          <h1 className='text-xl mb-4'>Properties</h1>
+          No properties currently owned
           <table className='striped rounded'>
             <thead>
               <tr>
@@ -102,6 +102,16 @@ const Home: NextPage = () => {
                 ))
               }
             </tbody>
+            <tfoot>
+              <tr>
+                <td>Totals:</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tfoot>
           </table>
         </section>
       </main>
