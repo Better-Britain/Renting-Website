@@ -3,54 +3,10 @@ import Head from 'next/head'
 import Navbar from '../components/Navbar'
 import pound from '../functions/formatting/pound'
 import percent from '../functions/formatting/percent'
+import assets from '../data/assets'
+import { investments, investmentSummary } from '../data/investments'
 
 const fundsRaised = 0;
-
-const investments = [
-  {
-    name: 'Vanguard All-World High Dividend Yield[VHYL]',
-    invested: 0,
-    annualDividendForecast: 0,
-    dividendsReceived: 0,
-    taxPaid: 0,
-    netIncome: 0,
-  },
-  {
-    name: 'Crypto Medium Yield/Risk',
-    invested: 0,
-    annualDividendForecast: 0,
-    dividendsReceived: 0,
-    taxPaid: 0,
-    netIncome: 0,
-  },
-  {
-    name: 'Crypto High Yield/Risk',
-    invested: 0,
-    annualDividendForecast: 0,
-    dividendsReceived: 0,
-    taxPaid: 0,
-    netIncome: 0,
-  }
-]
-
-const assets = [
-  {
-    area: 'Sunderland',
-    properties: 0,
-    agents: ['Gentoo'],
-    purchaseValue: 0,
-    monthlyRentIncome: 0,
-    annualYield: 0,
-  },
-  {
-    area: 'Newcastle-Upon-Tyne',
-    properties: 0,
-    agents: [],
-    purchaseValue: 0,
-    monthlyRentIncome: 0,
-    annualYield: 0,
-  },
-]
 
 const Home: NextPage = () => {
   return (
@@ -85,6 +41,7 @@ const Home: NextPage = () => {
                 <th>Annual Dividends Forecast</th>
                 <th>Dividends Received</th>
                 <th>Tax Paid</th>
+                <th>Losses</th>
                 <th>Net Income Earned</th>
               </tr>
             </thead>
@@ -97,6 +54,7 @@ const Home: NextPage = () => {
                     <td>{pound(investment.annualDividendForecast)}</td>
                     <td>{pound(investment.dividendsReceived)}</td>
                     <td>{pound(investment.taxPaid)}</td>
+                    <td>{pound(investment.losses)}</td>
                     <td>{pound(investment.netIncome)}</td>
                   </tr>
                 ))
@@ -105,6 +63,7 @@ const Home: NextPage = () => {
             <tfoot>
               <tr>
                 <td></td>
+                <td>{pound(investmentSummary.invested)}</td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -138,7 +97,7 @@ const Home: NextPage = () => {
                     <td>{asset.agents.join(', ')}</td>
                     <td>{pound(asset.purchaseValue)}</td>
                     <td>{pound(asset.monthlyRentIncome)}</td>
-                    <td>{percent(asset.annualYield)}</td>
+                    <td>{percent(((asset.monthlyRentIncome * 12) / asset.purchaseValue) * 100)}</td>
                   </tr>
                 ))
               }
