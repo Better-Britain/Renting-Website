@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Navbar from '../components/Navbar'
 import pound from '../functions/formatting/pound'
 import percent from '../functions/formatting/percent'
-import assets from '../data/assets'
+import { areaSummary } from '../data/assets'
 import { investments, investmentSummary } from '../data/investments'
 
 const fundsRaised = 0;
@@ -90,14 +90,14 @@ const Home: NextPage = () => {
             </thead>
             <tbody>
               {
-                assets.map(asset => (
-                  <tr key={asset.area}>
-                    <td>{asset.area}</td>
-                    <td>{asset.properties}</td>
-                    <td>{asset.agents.join(', ')}</td>
-                    <td>{pound(asset.purchaseValue)}</td>
-                    <td>{pound(asset.monthlyRentalIncome)}</td>
-                    <td>{percent(((asset.monthlyRentalIncome * 12) / asset.purchaseValue) * 100)}</td>
+                areaSummary.map(area => (
+                  <tr key={area.name}>
+                    <td>{area.name}</td>
+                    <td>{area.properties}</td>
+                    <td>{area.agents.join(', ')}</td>
+                    <td>{pound(area.purchaseValue)}</td>
+                    <td>{pound(area.monthlyRentalIncome)}</td>
+                    <td>{percent(((area.monthlyRentalIncome * 12) / area.purchaseValue) * 100)}</td>
                   </tr>
                 ))
               }
